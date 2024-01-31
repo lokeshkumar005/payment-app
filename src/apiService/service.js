@@ -1,11 +1,14 @@
 // services/apiService.js
-let API_BASE_URL = 'https://13.48.251.202.nip.io/api/data';
+// let API_BASE_URL = 'https://13.48.251.202.nip.io/api/data';
 // Update with your actual API base URL
+
+const TABLE = process.env.NEXT_PUBLIC_TABLE;
+const ADD = process.env.NEXT_PUBLIC_ADD;
 
 const apiService = {
     getUser: async () => {
         try {
-            const response = await fetch(`${API_BASE_URL}/view`, {
+            const response = await fetch(TABLE, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,7 +26,7 @@ const apiService = {
     },
     getUserReceipt: async (donorInfoId) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/view/${donorInfoId}`, {
+            const response = await fetch(`${TABLE}/${donorInfoId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -41,7 +44,7 @@ const apiService = {
     },
     addPayment: async (userData) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/add`, {
+            const response = await fetch(ADD, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
